@@ -17,19 +17,11 @@ end
 
 helpers do
   def list_complete?(list)
-    todos_count(list).positive? && todos_remaining_count(list).zero?
+    list[:todos_count].positive? && list[:todos_remaining_count].zero?
   end
 
   def list_class(list)
     'complete' if list_complete?(list)
-  end
-
-  def todos_count(list)
-    list[:todos].size
-  end
-
-  def todos_remaining_count(list)
-    list[:todos].reject { |todo| todo[:completed] }.size
   end
 
   def sort_lists(lists)
